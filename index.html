@@ -444,59 +444,82 @@
     #gallery .section-label { color: var(--yellow); }
     #gallery .section-title { color: white; }
     #gallery .section-desc { color: rgba(255,255,255,0.5); }
-    .gallery-tabs {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      margin-bottom: 2rem;
+
+    .lesson-row {
+      display: grid;
+      grid-template-columns: 180px 1fr 1fr;
+      gap: 1.2rem;
+      align-items: start;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
     }
-    .gallery-tab {
-      padding: 0.4rem 1rem;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      cursor: pointer;
-      border: 1px solid rgba(255,255,255,0.2);
-      color: rgba(255,255,255,0.6);
-      background: transparent;
-      transition: all 0.2s;
+    .lesson-row:last-child { border-bottom: none; margin-bottom: 0; }
+
+    .lesson-meta {
+      padding-top: 0.4rem;
     }
-    .gallery-tab.active, .gallery-tab:hover {
+    .lesson-badge {
+      display: inline-block;
       background: var(--yellow);
       color: var(--dark);
-      border-color: var(--yellow);
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
+      margin-bottom: 0.5rem;
     }
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 1rem;
+    .lesson-row-title {
+      color: white;
+      font-weight: 700;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      margin-bottom: 0.3rem;
     }
-    .gallery-item {
+    .lesson-row-en {
+      color: rgba(255,255,255,0.35);
+      font-size: 0.72rem;
+    }
+
+    .gallery-photo {
       position: relative;
-      border-radius: 10px;
+      border-radius: 8px;
       overflow: hidden;
       aspect-ratio: 4/3;
       background: #2a2e1e;
     }
-    .gallery-item.wide { grid-column: span 2; aspect-ratio: 16/9; }
-    .gallery-item img {
+    .gallery-photo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform 0.4s ease;
+      display: block;
     }
-    .gallery-item:hover img { transform: scale(1.05); }
-    .gallery-caption {
+    .gallery-photo:hover img { transform: scale(1.05); }
+    .gallery-photo-caption {
       position: absolute;
       bottom: 0; left: 0; right: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-      color: white;
-      font-size: 0.78rem;
-      padding: 1.5rem 0.8rem 0.8rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.82), transparent);
+      color: rgba(255,255,255,0.9);
+      font-size: 0.72rem;
+      padding: 1.2rem 0.8rem 0.6rem;
       opacity: 0;
       transition: opacity 0.3s;
     }
-    .gallery-item:hover .gallery-caption { opacity: 1; }
+    .gallery-photo:hover .gallery-photo-caption { opacity: 1; }
+
+    @media (max-width: 900px) {
+      .lesson-row {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+      }
+      .lesson-meta { grid-column: span 2; }
+    }
+    @media (max-width: 560px) {
+      .lesson-row { grid-template-columns: 1fr; }
+      .lesson-meta { grid-column: span 1; }
+    }
 
     /* SURVEY */
     #survey { background: white; }
@@ -962,90 +985,210 @@
     <h2 class="section-title">用鏡頭記錄的學習歷程</h2>
     <p class="section-desc">從教室到廁所，從練習到正式上台——每一個畫面都是真實的公民行動。</p>
 
-    <div class="gallery-grid">
-
-      <!-- 看見世界 -->
-      <div class="gallery-item wide">
-        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhuTLL3AbqEFsqkQHZw6-0Py9fkFgVFHUzCJsvPgCzoIywAH7WlZeQ5uJTB4k2rnBCXrWrcoKJxSuXmPBtspA9QAMDsg9hC2--Ncx4Pu10n_UaKzbwnXP0rcGo2CiA1JaxY3xZmDUsP2-rxg1GHYn2Jcohj8pHSd4yjU9-spdrqAD1ZP7g6bBmSIZtlWOLw/w1280-h960/IMG_2185.HEIC" alt="學生觀看 Unecebo 紀錄片" loading="lazy">
-        <div class="gallery-caption">第 1 節課 · 學生觀看南非男童 Unecebo 的故事紀錄片</div>
+    <!-- 第 1 節課 -->
+    <div class="lesson-row">
+      <div class="lesson-meta">
+        <div class="lesson-badge">第 1 節課</div>
+        <div class="lesson-row-title">廁所裡的人生大事</div>
+        <div class="lesson-row-en">Toilet: A Matter of Life and Death</div>
       </div>
-
-      <!-- AI 寫信 -->
-      <div class="gallery-item">
-        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgebek9ULmpnYLVZ3H5t2Qvqr_e_nVc8o9fIToWrcO9bqvmN0H3wb2puJa65OCDfBCCtLmV4L9Ivj5OMjGZXdgu6DbtUO71Om_ohJjwu8pmc0PyN8SZYSht9Jvh6inXJi5yqZGsUcuJB8x_XDSNPOWP1vFQQsQCmtRTyoIdu91Df6im2zVckNhaALX0eAi_/w640-h480/IMG_2233.HEIC" alt="學生用 iPad 操作 EdCafe AI" loading="lazy">
-        <div class="gallery-caption">第 2 節課 · 用 EdCafe AI 輔助撰寫英文倡議信</div>
+      <div class="gallery-photo">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhuTLL3AbqEFsqkQHZw6-0Py9fkFgVFHUzCJsvPgCzoIywAH7WlZeQ5uJTB4k2rnBCXrWrcoKJxSuXmPBtspA9QAMDsg9hC2--Ncx4Pu10n_UaKzbwnXP0rcGo2CiA1JaxY3xZmDUsP2-rxg1GHYn2Jcohj8pHSd4yjU9-spdrqAD1ZP7g6bBmSIZtlWOLw/w640-h480/IMG_2185.HEIC" alt="學生觀看 Unecebo 紀錄片" loading="lazy">
+        <div class="gallery-photo-caption">學生觀看南非男童 Unecebo 的故事紀錄片</div>
       </div>
-
-      <div class="gallery-item">
-        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEtYbx1kTJRGhhEXvlR0yyk-Ugnj0M-w2cX2KIhs4QvzGqEa7yC1qK2AXaxi2aPJ3y4gFGBTFk3i-woSbCppzbB8c3yJH8BoUGxrgPn9FNQlFGG4RVoN5eAHYOjjaBH4KF3OMQLcWPyM1-EAXbBY7rCYmsSTyitwPOFpuPMDtgvRKW84OG82L0mMGmaaPm/w640-h480/IMG_2220.HEIC" alt="學生專注寫信" loading="lazy">
-        <div class="gallery-caption">第 2 節課 · 學生與 AI 對話，完成英文草稿</div>
+      <div class="gallery-photo">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiXR_WmoDpwhGkaFvtPKgDPZTyq-KvMd7Rcc79rvSM27xN7vpI4cWeG5qEmB827d0Xk_6q43YdLwXfiKq_QaHZv_t1Qh4MvkmzxmML8uzl1_J0dEkOItvjzJmFGztXtbpWL8gECOoP7isd_CDHf40gIxc5WxuNvtrLnyIW3tH_DhJOMerTrhA8Uf5u-JWs1/w640-h480/IMG_2187.HEIC" alt="課堂討論" loading="lazy">
+        <div class="gallery-photo-caption">連結 SDG 4.a，導入寫信馬拉松行動概念</div>
       </div>
-
-      <!-- 實地勘查 -->
-      <div class="gallery-item">
-        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgPNWBGkVnAFbd-6LO3ENv2tisokp2YC4pCA3MetgKrri7aDu_bLO1207Xeyqd0TYGdaODxAQGjsmUt17f_tOXbxNwOW29tDbqHxiWsmyqESvPh6izkL6DWbNmJgKLNQyfZCs-7xBxKlmCb2MFSTVFBrPrUO1Tr_djCszzlNsLoRXNt3ESjRNs2l6KQ8gcu/w640-h480/%E7%9B%B8%E7%89%87%202025-11-6%2016%2018%2012.jpg" alt="學生實地勘查廁所" loading="lazy">
-        <div class="gallery-caption">第 4 節課 · 學生帶 iPad 到廁所實地拍照與評核</div>
-      </div>
-
-      <div class="gallery-item">
-        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjJMGvaQQb6dkyIMdjvhyNNaZCbRQg73UHgmC5zohIGDznTGSJZmcADYdRQoLy0kU_gEsHFlCjGSBvKWOgk3dxkbw_m0tbs5niTply_a1jhiBHUObmLj1vdnK08pz66rhA-ieDqJofIznsRoMIys4zXzpU0oDPUl-5bFBO7gjWJb9a-s7R0cyUK9yWbP1Sv/w640-h480/%E7%9B%B8%E7%89%87%202025-11-6%2016%2012%2035.jpg" alt="學生填寫廁所評核表" loading="lazy">
-        <div class="gallery-caption">第 4 節課 · 分組記錄廁所安全、包容、有效三面向</div>
-      </div>
-
-      <div class="gallery-item">
-        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiVAig3Y5y3AYL31aDG35gL7nAUqf7jW9P-9NeHX70SpDyzf6ziJQicPAbCJOE7kfNtBAtXFsChlbkhjOxwmFihu9n9YOHwvEVgzK_EuDtIwgaQEV13Ym4TGuqgJOYRM9iALP4NuVyGE6j_5Bak74AZtsWyzg2neKkBouG9T9aAeF2GddRK5fv4NG2eDL-R/w640-h480/%E7%9B%B8%E7%89%87%202025-11-6%2016%2012%2050.jpg" alt="學生在廁所外討論" loading="lazy">
-        <div class="gallery-caption">第 4 節課 · 小組討論模糊項目並形成共識</div>
-      </div>
-
-      <!-- 小組報告 -->
-      <div class="gallery-item wide">
-        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgvlZ264Hsv1l8b6r59AXv5ZK19lOcZVQyfJt0fJoonKFfMDK8_WFs1zwAtOER5n0nTAFnwZ-2dPlEgXzRVLwV2FQ6ZClbSiSEgGYSyIiXPXmnqS7CIr27K4wgMMjx-_FY1BUyUsbo2bx5wj2bnY3GeX1Egucq_TctaLrXc1cXjPsCVMhza7k-07jlpEHJx/w1280-h960/%E7%9B%B8%E7%89%87%202025-11-28%2015%2034%2046.jpg" alt="學生小組上台報告" loading="lazy">
-        <div class="gallery-caption">第 8 節課 · 學生分組上台報告，同儕互評</div>
-      </div>
-
-      <div class="gallery-item">
-        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgGacJIJQjGsHO4yACdwaWd06Ms4PS0drZgZgujDSKfiSuC2hF4qVLyTYxpKab0_az7PjrOripvPpDE8s2pCaEv6Nv7oQi40C4h_WeP-bFgA_YGJJ0ZQ3W-ydvvxaxwWStMCz_q8s6F5eP2o-o8p2aEK3Q2HgoxANF-AhVCieQnZQsCvYpMNo6Ezp0OoIHE/w640-h480/%E7%9B%B8%E7%89%87%202025-11-28%2015%2004%2030.jpg" alt="學生看 Padlet 準備報告" loading="lazy">
-        <div class="gallery-caption">第 8 節課 · 用 Padlet 圖文輔助報告</div>
-      </div>
-
-      <div class="gallery-item">
-        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjL7xtBYm1aUC94CkdSHiq7Mywlg3b3wwbMndq3YNUNCXQ9Zy_ekURnXHvbplRu-eJ_5nCS9DU5UJRPDu4hviOgvgwmKXi8zofJSscz4t6DQcjmcVoCVSoyHhI0njOfYF4DvdkupNu5EQj28wr7szn4UwUNSp5mbxN806uMPGT2TZuUbSDbx_O53kkFbQBv/w640-h480/%E7%9B%B8%E7%89%87%202025-11-28%2015%2018%2022.jpg" alt="小組報告台下聽眾" loading="lazy">
-        <div class="gallery-caption">第 8 節課 · 台下同學依互評量表給分</div>
-      </div>
-
-      <!-- 向校長報告 -->
-      <div class="gallery-item wide">
-        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgCQuVn1XDqfaisVIKs0RFNh3M0iC4vvTg5SyeJIsWZM5UIuSHNVBYsw3y5s4mMuryMW9cV7qBayDF0pLjIXnZ8II8w3zohFgEDW8I4MzZIMTE3oAQPT8fCrtWvJHYm-1O0acIyFXmt70H7lZdNWF2uP_CIIQNafCVaKkEGP5jbiHzqzARMuFhkEdlXEUvv/w1280-h720/114-12-12-%E5%BB%81%E6%89%80%E6%AA%A2%E6%A0%B8%E5%A0%B1%E5%91%8A.jpg" alt="學生向校長正式提案" loading="lazy">
-        <div class="gallery-caption">第 10 節課 · 學生向校長與總務人員正式提案——關鍵時刻</div>
-      </div>
-
-      <div class="gallery-item">
-        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi2F0aRSy2VrT9pQcf2vkp4E0aYAag2YatZcjlxix5GgNnaVywQd0XuSDKRctZfungKICFoux9V6YVWIeVVVVfIRtnR5fsOJIna6RBYlTTWqWfbbOSCWdXuE3SrPjVmkgaz6NQJuT3N24CZBUE_UvujkoAguwDTtEfWLU_sKjiXCaiDno9lsrbkAOFZv2vF/w640-h480/IMG_1887.HEIC" alt="學生報告中" loading="lazy">
-        <div class="gallery-caption">第 10 節課 · 依 ACE 法則完成 2 分鐘結構化提案</div>
-      </div>
-
-      <div class="gallery-item">
-        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjIMNrCPp9g-nmg-zqy7_oV94cAnqf4DKf8vIdtNPdd-rUJep4wgkqHFAUle2Ta6B93Txdi84-SCZzeBtWcfPM1VI8MIbpWJ7p5eYPQcpNhGqbncx4lOnsfwZgjgHKuaDOIARevF42NB7_-6_CWpIUCGV6oIkbv_V2ygqvqABs1PkyD5pzxLMosU2VQOAmR/w640-h480/IMG_1900.HEIC" alt="報告後討論" loading="lazy">
-        <div class="gallery-caption">第 10 節課 · 校長說明短期可行與需申請預算的長期計劃</div>
-      </div>
-
-      <!-- 明信片 -->
-      <div class="gallery-item">
-        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhY3r-Na0F0NNrfv5wgs-faYPasMRQe74ZpV963r6nD_QNOKMYNUSClOnw7agmMa6HxnT1ETasvhfafj1qQX01AX0xS2rXwBKiEIG7HY9TIsTz8I_CgcUTaJXfLFD6nFbe-4Xxl5w_KspSry1A0zuPwW7Eb9ApNJZ2Bma2Nkb141_mQYg-Ud1PhrB6XlFD0/w640-h480/IMG_2662.heic" alt="學生製作明信片" loading="lazy">
-        <div class="gallery-caption">第 11 節課 · 親手製作國際聲援明信片</div>
-      </div>
-
-      <div class="gallery-item">
-        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhPMtM2p2MjSMM8-3rXrdX2YrP0RwMY0nP11RZNpSPqNeR4Zv-I7eYBogSPnp5nA6UaBuCrSco3Ph5GvVZiGh7qToEn3J1vg4tpUySWwOBib524QCSQWVlflB7QC2y3qbfzlbGqBNolj9K324cRYcX7u5PfHXVfNa4oX8Vvun68mFL6ulZpjXoipVoGQH5/w640-h480/IMG_2678.heic" alt="完成的明信片" loading="lazy">
-        <div class="gallery-caption">第 11 節課 · 寄往南非的聲援明信片</div>
-      </div>
-
-      <div class="gallery-item">
-        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj9FPdDyah2SUNwK8m17Vg7uY5D2TGROVO6AxqAq_vupezswKxZqvQgiK3E3tZdAHGY6LEotNeLIPytzqVCRpaEVpxAKvN0DqtEYDmM-ZLDLA1j3mG2zFP2ErIcDop0ChvxAEos_mshskTwIofjVwTeNo8sdRTj6o5l_yl9OTaa68-qPFrZFwrj6rdEq9p5/w640-h480/IMG_2689.heic" alt="學生的明信片作品" loading="lazy">
-        <div class="gallery-caption">第 11 節課 · 學生的手繪明信片——給 Unecebo 家人的力量</div>
-      </div>
-
     </div>
+
+    <!-- 第 2 節課 -->
+    <div class="lesson-row">
+      <div class="lesson-meta">
+        <div class="lesson-badge">第 2 節課</div>
+        <div class="lesson-row-title">寫一封信，改變生命</div>
+        <div class="lesson-row-en">Write for Rights with AI</div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZphB2wun5vlnoZhAQ7drFHZdiWL1_QAiBj_-Jgwse3HjC8k9KFh3NgoWH5kbbmOB5yYrGDBVhPBx2J7j7RPAKnb-scq8jDLI1g4TBdTImn_0vBYJxO8N3Y0Yzj334-NnZRA4dT71pV66nP1gk4V_mQGkB987f_Br83YS_iubDWs6lq0Pd9dAB4AIntuja/w640-h480/IMG_2230.HEIC" alt="學生用 iPad 寫信" loading="lazy">
+        <div class="gallery-photo-caption">學生透過 EdCafe AI 輔助，完成英文倡議信草稿</div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiAYL7Pp07rTWN8cFunkY0Azl2FLk4-vU2elw6VKich6YxCjtTuogE2iXb0miybG1MGrWWQFUaDnJ1TL9s645pVwZdIDbdWFzlXt0OZNgQhA6b4zmXOaMmvwNz7AqPDmFR2LQDHbWC7a7NocxU10QKyhd3aUOLqU0xDq7JROZF8TclMlU9RFq8GcWk82_y-/w640-h416/Gemini_Generated_Image_c08rn1c08rn1c08r.png" alt="AI 生成的寫信情境圖" loading="lazy">
+        <div class="gallery-photo-caption">AI 小助教引導學生以 PEEL 架構寫給部長、HEAL 架構寫給家屬</div>
+      </div>
+    </div>
+
+    <!-- 第 3 節課 -->
+    <div class="lesson-row">
+      <div class="lesson-meta">
+        <div class="lesson-badge">第 3 節課</div>
+        <div class="lesson-row-title">廁所小體檢～尋找「安心雅」</div>
+        <div class="lesson-row-en">Toilet Check: Safe, Inclusive, Respectful</div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgOP_uqecDDfCLjcN8npDxqxFQM2UUvDHnsAD_XT6nuP3JZ_itetpYD01Gt2AkO-_XwSAvF4RRXP2nTMihizvXQegui9PwmV7s8tXR8iQyuINYlR87KBtOmRYXwcidqrUUKmSByByiJSAyBSti0j3OhYZLD-JPkjoIrKRLmBbybN5-ifbRiDkVlVky3R87t/w640-h402/%E6%88%AA%E5%9C%96%202025-10-31%2020.45.09.png" alt="安心雅概念建構" loading="lazy">
+        <div class="gallery-photo-caption">認識「安（Safe）、心（Inclusive）、雅（Respectful）」三大面向</div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhQMF7OjkXe6jVTfFjRtgeKSICCM3Q0D8EdHhGMay10pnOeC4LFUuaRlWms9fI4MnItpUdBiAD_OakHWkWoP3iLlpfOK-DsTd3qD0lJoHM9joTs8s1wwM8iOWFPscJVvDGTB_HVJf_VD3PFcS574sT2xeRo6zs5w5k5LjLHFoBoqR-W-24tOxj9hErTUAOu/w640-h480/IMG_1838.HEIC" alt="學生課堂討論" loading="lazy">
+        <div class="gallery-photo-caption">學生討論廁所指標分類，準備下節課實地檢核任務</div>
+      </div>
+    </div>
+
+    <!-- 第 4 節課 -->
+    <div class="lesson-row">
+      <div class="lesson-meta">
+        <div class="lesson-badge">第 4 節課</div>
+        <div class="lesson-row-title">從紙上談兵到實地勘查</div>
+        <div class="lesson-row-en">Fieldwork: From Criteria to Campus</div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgPNWBGkVnAFbd-6LO3ENv2tisokp2YC4pCA3MetgKrri7aDu_bLO1207Xeyqd0TYGdaODxAQGjsmUt17f_tOXbxNwOW29tDbqHxiWsmyqESvPh6izkL6DWbNmJgKLNQyfZCs-7xBxKlmCb2MFSTVFBrPrUO1Tr_djCszzlNsLoRXNt3ESjRNs2l6KQ8gcu/w640-h480/%E7%9B%B8%E7%89%87%202025-11-6%2016%2018%2012.jpg" alt="學生實地勘查廁所" loading="lazy">
+        <div class="gallery-photo-caption">學生帶 iPad 前往各樓層廁所實地拍照評核</div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgtlfOXb-qFOQILpy0TZKOnTBHtZCmROpA8ijjsOdiAZa18Mpx1Xdc68SKLjHgqXvzEsbmm63ggN6knilY05uWtpU1uFbYz1jiQmZW3VQ1eYOcMFRvxUVODzEuwRjdVojOOqzNAvH2mOpW2CUqB-plHAQf7aeIbJZJe2cmdSKerccWNyQiVsI6Vc8GsYM-0/w640-h480/%E7%9B%B8%E7%89%87%202025-11-6%2016%2021%2034.jpg" alt="學生填寫 Google 表單" loading="lazy">
+        <div class="gallery-photo-caption">分組填寫 Google Forms，記錄安全、包容、有效三面向評分</div>
+      </div>
+    </div>
+
+    <!-- 第 5 節課 -->
+    <div class="lesson-row">
+      <div class="lesson-meta">
+        <div class="lesson-badge">第 5 節課</div>
+        <div class="lesson-row-title">數字說了什麼話？</div>
+        <div class="lesson-row-en">Data Literacy: Seeing Multiple Truths</div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEherALnEJy1DdziqH9eGggR2Xo7MIfByWGuwTlK-hwlVEsxImDgbJACNgihx-dACXsjcnccBm12-gA4ZJZqVASu2XuuSg3H9d6A2b09Jn7oNgM_H3rlXkiwz0rE_Xpp-IMKKk-TDCX5bbjFzZApvvCk5PKy80EqsxGmUZQjn2Vxnl0NQNnMCsYD5QgMsnLd/w640-h480/IMG_2376.HEIC" alt="學生解讀廁所數據" loading="lazy">
+        <div class="gallery-photo-caption">學生從數據中找出極端值、比較差異、發現規律</div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgqvqhVbCThE9dnlNycG-ZypP87_gjec5k_S_bbEO_0Sfzxkd49aEJZKGdfYHHjaPvAT7fip6bTc3V0yl6pShxOE6XoatCZqDn_mE6-RFyO7lLVn6uYtgqm5FDxkUUwBWB3fK0HMTL4F98LWwFH3wXhIwREQu9NTj7wBZlZCjFShvFZjAsPYPqyL1a0mX4u/w640-h450/%E6%88%AA%E5%9C%96%202025-11-08%2021.24.52.png" alt="廁所數據統計截圖" loading="lazy">
+        <div class="gallery-photo-caption">全校廁所三面向評分總覽——無障礙廁所平均最低（2.46 分）</div>
+      </div>
+    </div>
+
+    <!-- 第 6 節課 -->
+    <div class="lesson-row">
+      <div class="lesson-meta">
+        <div class="lesson-badge">第 6 節課</div>
+        <div class="lesson-row-title">讓照片說話</div>
+        <div class="lesson-row-en">We See, We Think, We Wonder</div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgfDzTKDlXpOYkZj3pZogv8qIBJld-4-YymKeFkRpW6zgZze61dPvq_bwWi2HBLaErCM7W_T9NsCg1ubglGecoymAgc0oyBAn6QV6pow8RRr6V1wBroGx6XZ1PRgFFuDB16bl0UT9i341K7a2Ze1NQdLRxTPA-yp-TAq6elXxqOSuWg9KiPiHsbVxhMwO34/w640-h480/IMG_2463.heic" alt="學生在 Padlet 上傳圖文" loading="lazy">
+        <div class="gallery-photo-caption">學生將廁所照片上傳 Padlet，依 See-Think-Wonder 架構撰寫觀察</div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiSLDAGa6bKrkkoYn8bRVluSX1Noya4dOPE1sxeBcvjHVG0HrSSY63o1vmZ-RJjPTa5hfjNFKwpcwSdznTjkO27ZXTxB1dmh91NDOBp5jE-zZn-HF65zA6PvBNOn_oZcS0pa_-Dn5dN-ib3pcfEZSZM3Zl6GXbP8rNuuYtO3yaVg7AMBMGfLwxF1PzS2iAU/w640-h480/IMG_2459.heic" alt="學生討論報告內容" loading="lazy">
+        <div class="gallery-photo-caption">小組討論事實描述、觀點推論與改善建議</div>
+      </div>
+    </div>
+
+    <!-- 第 7 節課 -->
+    <div class="lesson-row">
+      <div class="lesson-meta">
+        <div class="lesson-badge">第 7 節課</div>
+        <div class="lesson-row-title">五部分、三層次、兩分鐘</div>
+        <div class="lesson-row-en">Preparation for Presentation</div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjWeBWAKiCrm-2SKzsQwplL1Iyix0s4Ih-AxKqWFYjpZ_JzCouMwOpFpfywQ9P3eQ63dqC4jzaWZlQuiY6Qb3oR4UysKYc9toD4s9XZr_Ymcj23gPBuuMtrqLRh2eQPQniwRZT6qAQX59RR5ATTd23FDLKowzmbmeEFK-pvdLigojMqTTKEoG4k05oKhhGk/w640-h480/%E7%9B%B8%E7%89%87%202025-11-21%2015%2031%2037.jpg" alt="學生練習口頭報告" loading="lazy">
+        <div class="gallery-photo-caption">小組依五段式結構練習兩分鐘口頭報告</div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj-CvlalvPjmxejHJYvWDdAuW4v3eJqSLYCK7W3uXQyCza5PMxpHCL0lkSvEXbV8nHtVUdTKdKbEdExvGjVxZlGkn912qQN4Wl66e0zSyH8kT_JQG8xd41PwORCetXpbMTDeYEbbLe9Y-CgC4dx9i-pSTBvMXPUZLzq2TB2YbiZV0QZsdq-cY8BMjqk0odA/w640-h480/%E7%9B%B8%E7%89%87%202025-11-21%2015%2032%2046.jpg" alt="學生計時練習" loading="lazy">
+        <div class="gallery-photo-caption">計時分段練習，確認每位學生熟悉內容與節奏</div>
+      </div>
+    </div>
+
+    <!-- 第 8 節課 -->
+    <div class="lesson-row">
+      <div class="lesson-meta">
+        <div class="lesson-badge">第 8 節課</div>
+        <div class="lesson-row-title">小組報告～看見那些沒被看見的</div>
+        <div class="lesson-row-en">Making the Invisible Visible</div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgvlZ264Hsv1l8b6r59AXv5ZK19lOcZVQyfJt0fJoonKFfMDK8_WFs1zwAtOER5n0nTAFnwZ-2dPlEgXzRVLwV2FQ6ZClbSiSEgGYSyIiXPXmnqS7CIr27K4wgMMjx-_FY1BUyUsbo2bx5wj2bnY3GeX1Egucq_TctaLrXc1cXjPsCVMhza7k-07jlpEHJx/s3264/%E7%9B%B8%E7%89%87%202025-11-28%2015%2034%2046.jpg" alt="小組正式報告" loading="lazy">
+        <div class="gallery-photo-caption">各組上台進行兩分鐘正式報告，呈現廁所調查發現</div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjL7xtBYm1aUC94CkdSHiq7Mywlg3b3wwbMndq3YNUNCXQ9Zy_ekURnXHvbplRu-eJ_5nCS9DU5UJRPDu4hviOgvgwmKXi8zofJSscz4t6DQcjmcVoCVSoyHhI0njOfYF4DvdkupNu5EQj28wr7szn4UwUNSp5mbxN806uMPGT2TZuUbSDbx_O53kkFbQBv/s3264/%E7%9B%B8%E7%89%87%202025-11-28%2015%2018%2022.jpg" alt="同儕互評" loading="lazy">
+        <div class="gallery-photo-caption">同儕依互評量表評估報告品質，發掘被忽視的問題</div>
+      </div>
+    </div>
+
+    <!-- 第 9 節課 -->
+    <div class="lesson-row">
+      <div class="lesson-meta">
+        <div class="lesson-badge">第 9 節課</div>
+        <div class="lesson-row-title">口頭報告的 ACE 王牌法則</div>
+        <div class="lesson-row-en">ACE for Decision-Maker Presentations</div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjDWfKr-80hDfhOpLIzvLHEI8X7khydS88k966myFVImFGwQa_ilGCGrlfFEUvqjeM40aJA70C3TrmoiKohApkXNE9qM-4gsI4SdKNGD5R8VdTDIdrho6cHShBd59z1T8LW75Ihc0QfPa_imandDgt_KB2CewLM1TI319aMDvrXxJCvTiKVExQRCkulQWAo/s4032/%E7%9B%B8%E7%89%87%202025-12-5%2015%2018%2038.jpg" alt="ACE法則練習" loading="lazy">
+        <div class="gallery-photo-caption">學習 ACE 法則，練習將問題敘述轉化為具體建議</div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjMlVCAkMB0uHjIqTSQqQlA5L0-ai3Ll7iEFrVbcX0rkzPRZ5wlNisgDC9996ABi7ORCqMVHoS5iv8gNmgx5nHGu9RXsclX6OUfScGjNYNHWJajoTy5PSyVxoLfn1Jy9yQUmn-uQtjeiywp3kxzRg83kka1V7Zo_zpeGcgSuJbUCsE9OHDAd-EKtlSDwvzm/s4032/%E7%9B%B8%E7%89%87%202025-12-5%2015%2030%2043.jpg" alt="開場白微型演練" loading="lazy">
+        <div class="gallery-photo-caption">觀看錄影自我省察，進行開場白微型演練</div>
+      </div>
+    </div>
+
+    <!-- 第 10 節課 -->
+    <div class="lesson-row">
+      <div class="lesson-meta">
+        <div class="lesson-badge">第 10 節課</div>
+        <div class="lesson-row-title">當校長坐在台下～廁所體檢報告</div>
+        <div class="lesson-row-en">When the Principal Is the Audience</div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi2F0aRSy2VrT9pQcf2vkp4E0aYAag2YatZcjlxix5GgNnaVywQd0XuSDKRctZfungKICFoux9V6YVWIeVVVVfIRtnR5fsOJIna6RBYlTTWqWfbbOSCWdXuE3SrPjVmkgaz6NQJuT3N24CZBUE_UvujkoAguwDTtEfWLU_sKjiXCaiDno9lsrbkAOFZv2vF/w640-h480/IMG_1887.HEIC" alt="向校長提案" loading="lazy">
+        <div class="gallery-photo-caption">學生分組向校長及總務人員進行正式口頭提案</div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjIMNrCPp9g-nmg-zqy7_oV94cAnqf4DKf8vIdtNPdd-rUJep4wgkqHFAUle2Ta6B93Txdi84-SCZzeBtWcfPM1VI8MIbpWJ7p5eYPQcpNhGqbncx4lOnsfwZgjgHKuaDOIARevF42NB7_-6_CWpIUCGV6oIkbv_V2ygqvqABs1PkyD5pzxLMosU2VQOAmR/w640-h480/IMG_1900.HEIC" alt="校長當場回應" loading="lazy">
+        <div class="gallery-photo-caption">校長當場回應短期行動與長期計劃，學生理解公共行政現實</div>
+      </div>
+    </div>
+
+    <!-- 第 11 節課 -->
+    <div class="lesson-row">
+      <div class="lesson-meta">
+        <div class="lesson-badge">第 11 節課</div>
+        <div class="lesson-row-title">從全球聲援到在地感謝</div>
+        <div class="lesson-row-en">From Global Advocacy to Local Gratitude</div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj6agwa5FJurgt4GLlkycXVYyABw82G_NjwZbQz3ViJMUDhm7pZ9VM5qbmUkOEdvs-pFYq_L3yU_YcpJynRKemR4YDtg1ynO1XQKn8sJWWuvCTvy_zrOT0UKdjzc-fzdv8RbTDH5I-Th0bDUmQksGVoBGPQqpjlpc2ivp6r42qnksdXqsOi7YXNBMFCCMWL/s4032/IMG_2663.heic" alt="寫倡議明信片" loading="lazy">
+        <div class="gallery-photo-caption">學生完成寄往南非的英文倡議明信片</div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhRraTlvYiUwmI-NkcKYHvwr-pBUi1EvMOmwqQnl4oaV2FTPZBXJpShhz6VaEchbHdZu4UAqk61cvtu4zbp4BZOxv-tVFHB-Gxxy0jXvozfgz7hW43tVvIeg-GRtYW0TJEr-2mdAJt2iwVmsi2_BXjcrblR4Z04RtfklFi9q8D0qs8e1bHzut-QjRjwuIgA/s1308/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202025-12-19%20104238.png" alt="感謝卡" loading="lazy">
+        <div class="gallery-photo-caption">撰寫感謝卡給清潔廁所的班級，實踐在地公民行動</div>
+      </div>
+    </div>
+
+    <!-- 第 12 節課 -->
+    <div class="lesson-row">
+      <div class="lesson-meta">
+        <div class="lesson-badge">第 12 節課</div>
+        <div class="lesson-row-title">連結點滴，看見力量</div>
+        <div class="lesson-row-en">Connecting the Dots</div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiZrWOA79DzgWgm4AFMxIMV8s7wzFIaTAzN5Bo9qUFAkUcN9TGmzDTtjt0fjedsxzcXG9bVejsRhiZ800d5xBiOHgYCfVAgvdkJprSyVkCrVXX0Z4qeo6fyM99NrXG_-d42ZyJOGQY7iBLkD2ukS0GBAhq40dPAP1xrsYOghTxGzve0MpIv-netLtTvXcUD/w640-h480/IMG_2701.heic" alt="課程總回顧" loading="lazy">
+        <div class="gallery-photo-caption">課程總回顧，觀看報告錄影進行自我比較與肯定</div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhHrckDQrMQcRJN-grAPTsFD-tq2b5LuiRqEgFQ5Z-wpt0PwE972R45MhHcCnNlGRskyaS035ZY_dV5HtpDS2wx4pVKmJnU4BFz0DqpbYR80t4x7lxDSV0mIOHnIYO98dg7qBSeTshaH_LO69ItsBiXuFTwlEIL3Sk5Yq7HXexVLZn0-NCj_VP7DTZZS7rX/s4032/IMG_2704.heic" alt="填寫學習回饋問卷" loading="lazy">
+        <div class="gallery-photo-caption">填寫學習回饋問卷，建立公民效能感</div>
+      </div>
+    </div>
+
   </div>
 </section>
 
