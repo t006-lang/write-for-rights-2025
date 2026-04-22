@@ -4,7 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>【廁】隱之心 × 2025 Write for Rights 寫信馬拉松</title>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <meta name="description" content="一門從南非廁所悲劇出發，帶領九年級學生看見世界、檢核在地、用數據發聲的英語彈性課程。2025 福科國中 SDG 4.a 公民行動成果。">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="【廁】隱之心 × 2025 Write for Rights 寫信馬拉松">
+  <meta property="og:description" content="一門從南非廁所悲劇出發，帶領九年級學生看見世界、檢核在地、用數據發聲的英語彈性課程。">
+  <meta property="og:url" content="https://t006-lang.github.io/write-for-rights-2025/">
+  <meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhuTLL3AbqEFsqkQHZw6-0Py9fkFgVFHUzCJsvPgCzoIywAH7WlZeQ5uJTB4k2rnBCXrWrcoKJxSuXmPBtspA9QAMDsg9hC2--Ncx4Pu10n_UaKzbwnXP0rcGo2CiA1JaxY3xZmDUsP2-rxg1GHYn2Jcohj8pHSd4yjU9-spdrqAD1ZP7g6bBmSIZtlWOLw/w1280-h960/IMG_2185.jpg">
+  <meta property="og:image:width" content="1280">
+  <meta property="og:image:height" content="960">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="【廁】隱之心 × 2025 Write for Rights">
+  <meta name="twitter:description" content="一門從南非廁所悲劇出發，帶領九年級學生看見世界、檢核在地、用數據發聲的英語彈性課程。">
+  <meta name="twitter:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhuTLL3AbqEFsqkQHZw6-0Py9fkFgVFHUzCJsvPgCzoIywAH7WlZeQ5uJTB4k2rnBCXrWrcoKJxSuXmPBtspA9QAMDsg9hC2--Ncx4Pu10n_UaKzbwnXP0rcGo2CiA1JaxY3xZmDUsP2-rxg1GHYn2Jcohj8pHSd4yjU9-spdrqAD1ZP7g6bBmSIZtlWOLw/w1280-h960/IMG_2185.jpg">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✍️</text></svg>">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
   <style>
     :root {
       --olive: #5c6b3a;
@@ -711,9 +724,45 @@
     }
     footer strong { color: rgba(255,255,255,0.7); }
 
+    /* HAMBURGER */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 6px;
+      color: white;
+      font-size: 1.3rem;
+      cursor: pointer;
+      padding: 0.2rem 0.6rem;
+      line-height: 1;
+      transition: border-color 0.2s;
+    }
+    .nav-toggle:hover { border-color: rgba(255,255,255,0.7); }
+
     /* RESPONSIVE */
     @media (max-width: 768px) {
-      nav ul { display: none; }
+      nav { position: relative; }
+      .nav-toggle { display: block; }
+      nav ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0; right: 0;
+        background: rgba(28,30,20,0.98);
+        flex-direction: column;
+        padding: 0.5rem 0;
+        gap: 0;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        z-index: 999;
+      }
+      nav ul.open { display: flex; }
+      nav ul li { padding: 0; }
+      nav ul li a {
+        display: block;
+        padding: 0.75rem 2rem;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+        font-size: 0.95rem;
+      }
       .case-grid { grid-template-columns: 1fr; }
       .stat-row { flex-direction: column; }
       .gallery-item.wide { grid-column: span 1; aspect-ratio: 4/3; }
@@ -727,6 +776,7 @@
 <!-- NAV -->
 <nav>
   <div class="logo">Write for Rights 2025</div>
+  <button class="nav-toggle" aria-label="開啟選單">☰</button>
   <ul>
     <li><a href="#case">課程起點</a></li>
     <li><a href="#journey">課程架構</a></li>
@@ -1726,6 +1776,61 @@ new Chart(radarCtx, {
     }
   }
 });
+</script>
+
+<script>
+// ── Hamburger menu ──────────────────────────────────────────
+const navToggle = document.querySelector('.nav-toggle');
+const navUl = document.querySelector('nav ul');
+navToggle.addEventListener('click', () => {
+  const isOpen = navUl.classList.toggle('open');
+  navToggle.textContent = isOpen ? '✕' : '☰';
+  navToggle.setAttribute('aria-label', isOpen ? '關閉選單' : '開啟選單');
+});
+navUl.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    navUl.classList.remove('open');
+    navToggle.textContent = '☰';
+  });
+});
+
+// ── Counter animation ───────────────────────────────────────
+function animateCounter(el) {
+  const original = el.textContent.trim();
+  const numStr = original.replace(/[^0-9.]/g, '');
+  const num = parseFloat(numStr);
+  if (isNaN(num)) return;
+  const suffix = original.replace(/[\d,\.]/g, '');
+  const hasComma = original.includes(',');
+  const decimals = (original.split('.')[1] || '').replace(/[^0-9]/g, '').length;
+  const duration = 1600;
+  const startTime = performance.now();
+
+  function update(now) {
+    const progress = Math.min((now - startTime) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const current = num * eased;
+    let display = decimals > 0
+      ? current.toFixed(decimals)
+      : hasComma
+        ? Math.floor(current).toLocaleString()
+        : Math.floor(current).toString();
+    el.textContent = display + suffix;
+    if (progress < 1) requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+
+const counterObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      animateCounter(entry.target);
+      counterObs.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.6 });
+
+document.querySelectorAll('.stat-num').forEach(el => counterObs.observe(el));
 </script>
 
 </body>
