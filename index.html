@@ -688,7 +688,7 @@
     #links { background: var(--cream); }
     .link-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 1rem;
     }
     .link-card {
@@ -800,6 +800,7 @@
       .stat-row { flex-direction: column; }
       .gallery-item.wide { grid-column: span 1; aspect-ratio: 4/3; }
       .survey-grid { grid-template-columns: 1fr; }
+      .link-grid { grid-template-columns: 1fr; }
     }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -1648,24 +1649,21 @@
     <h2 class="section-title">相關連結與資源</h2>
     <p class="section-desc">以下為課程中使用的線上平台與相關資源。</p>
 
-    <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2rem">
-      <a class="link-card" href="files/00-2025-臺中市素養教案-Write for Rights.pdf" download style="flex:1;min-width:200px">
+    <div class="link-grid">
+      <a class="link-card" href="files/00-2025-臺中市素養教案-Write for Rights.pdf" download>
         <div class="link-icon">📄</div>
         <div>
           <div class="link-name">素養教案下載</div>
           <div class="link-desc">2025 臺中市素養教案 PDF</div>
         </div>
       </a>
-      <a class="link-card" href="files/00-2025-臺中市素養教案-學習單.pdf" download style="flex:1;min-width:200px">
+      <a class="link-card" href="files/00-2025-臺中市素養教案-學習單.pdf" download>
         <div class="link-icon">📋</div>
         <div>
           <div class="link-name">學習單下載</div>
           <div class="link-desc">配套學習單 PDF</div>
         </div>
       </a>
-    </div>
-
-    <div class="link-grid">
       <a class="link-card" href="https://etleo.blogspot.com/2025/12/2025-write-for-rights.html" target="_blank">
         <div class="link-icon">📝</div>
         <div>
